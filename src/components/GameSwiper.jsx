@@ -9,22 +9,18 @@ import { EffectCoverflow, Navigation, Autoplay } from 'swiper/modules'
 import { Pause, Play } from 'lucide-react'
 
 export default function GameSwiper({ games }) {
-  // Track active (playing) state per slide by game _id
   const [playingId, setPlayingId] = useState(null)
   const videoRefs = useRef({})
 
   const handleToggleVideo = (e, id) => {
     e.preventDefault()
     if (playingId === id) {
-      // Pause
       if (videoRefs.current[id]) videoRefs.current[id].pause()
       setPlayingId(null)
     } else {
-      // Pause previous
       if (playingId && videoRefs.current[playingId]) {
         videoRefs.current[playingId].pause()
       }
-      // Play new
       if (videoRefs.current[id]) videoRefs.current[id].play()
       setPlayingId(id)
     }
@@ -60,7 +56,6 @@ export default function GameSwiper({ games }) {
               <div className="gameSlider">
                 <img src={game.img} alt={game.title} />
 
-                {/* Optional: video element if game has videoSrc */}
                 {game.videoSrc && (
                   <video
                     ref={(el) => { if (el) videoRefs.current[game._id] = el }}

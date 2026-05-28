@@ -39,7 +39,6 @@ export default function CardList({ games }) {
                             <span className='text-red-500 line-through text-xs font-bold'>
                                 ${item.price}
                             </span>
-                            {/* Harga Asli */}
                             <span className='text-white text-sm font-black'>
                                 ${item.price * item.discount}
                             </span>
